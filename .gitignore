@@ -2,12 +2,7 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-*.code-workspace
+
 
 /[Ll]ibrary/
 /[Tt]emp/
@@ -32,7 +27,12 @@
 
 # Visual Studio cache directory
 .vs/
-
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
 # Gradle cache directory
 .gradle/
 
