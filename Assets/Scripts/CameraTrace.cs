@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 [ExecuteInEditMode]
-public class Camera : MonoBehaviour
+public class CameraTrace : MonoBehaviour
 {
 
     private Transform trans;
