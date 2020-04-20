@@ -41,7 +41,7 @@ public class BallController : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape))
         {
             if (EditorUtility.DisplayDialog("Quit Game",
-                "Now Redirect you to main menu", "OK","Cancel"))
+                "Are you sure to Quit the game?", "Yes, I give up","Cancel"))
             {
                 Debug.Log("Quit Game~");
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
