@@ -549,7 +549,7 @@ MonoBehaviour:
 
     USE ''Q'', ''W'' TO SPIN
 
-    ESC TO QUIT GAME'
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -618,12 +618,12 @@ MonoBehaviour:
   m_margin: {x: -70.64258, y: 0, z: 0, w: -20.866142}
   m_textInfo:
     textComponent: {fileID: 481204550}
-    characterCount: 95
+    characterCount: 79
     spriteCount: 0
-    spaceCount: 21
-    wordCount: 22
+    spaceCount: 18
+    wordCount: 18
     linkCount: 0
-    lineCount: 4
+    lineCount: 3
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
