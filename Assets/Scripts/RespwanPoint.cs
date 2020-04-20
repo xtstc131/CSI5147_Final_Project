@@ -11,6 +11,9 @@ public class RespwanPoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.gameObject.GetComponent<BallController>().playerSpawnPoint = this.transform.position + Offset;
+        if(other != null) {
+            other.gameObject.GetComponent<BallController>().playerSpawnPoint = this.transform.position + Offset;
+        }
+       
     }
 }
