@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class BallController : MonoBehaviour
@@ -18,9 +19,13 @@ public class BallController : MonoBehaviour
 
     private int spin;
     public int Torque = 10;
+
+    public Button buttonQuit;
     void Start()
     {
         rigid = this.GetComponent<Rigidbody>();
+        var leave = buttonQuit.GetComponent<Button>();
+        leave.onClick.AddListener(endGame);
     }
 
 
@@ -38,7 +43,7 @@ public class BallController : MonoBehaviour
         }
         dir = new Vector3(-Input.GetAxis("Horizontal"), 0, -Input.GetAxis("Vertical"));
         brake = Input.GetKey(KeyCode.Space);
-        if (Input.GetKey(KeyCode.Escape))
+        /*if (Input.GetKey(KeyCode.Escape))
         {
             if (EditorUtility.DisplayDialog("Quit Game",
                 "Are you sure to Quit the game?", "Yes, I give up","Cancel"))
@@ -48,7 +53,7 @@ public class BallController : MonoBehaviour
             }
 
 
-        }
+        }*/
         if (Input.GetKey(KeyCode.Q))
         {
             spin = -1;
@@ -76,7 +81,10 @@ public class BallController : MonoBehaviour
         }
     }
 
-
+    public void endGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Wall"))

@@ -7,7 +7,10 @@ public class JumpTrap : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<Rigidbody>().AddForce (Vector3.up * 10, ForceMode.Impulse);
+        if(other != null) {
+            other.GetComponent<Rigidbody>().AddForce(Vector3.up * 10, ForceMode.Impulse);
+        }
+         
     }
 
 }
