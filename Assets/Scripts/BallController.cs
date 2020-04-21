@@ -21,8 +21,17 @@ public class BallController : MonoBehaviour
     public int Torque = 10;
 
     public Button buttonQuit;
+
+    public GameObject Fire;
+
+    private bool isWin = false;
+
     void Start()
     {
+        // var particleSystem = Fire.GetComponent<ParticleSystem>();
+        // var em = particleSystem.emission;
+        // em.enabled = false;
+        // particleSystem.Stop();
         rigid = this.GetComponent<Rigidbody>();
         var leave = buttonQuit.GetComponent<Button>();
         leave.onClick.AddListener(endGame);
@@ -33,7 +42,7 @@ public class BallController : MonoBehaviour
 
     void Update()
     {
-        if (this.transform.position.y < fallZone) //Assuming its a 2D game
+        if (this.transform.position.y < fallZone && !isWin) //Assuming its a 2D game
         {
             if (playerSpawnPoint != null)
                 this.transform.position = playerSpawnPoint;
@@ -43,17 +52,6 @@ public class BallController : MonoBehaviour
         }
         dir = new Vector3(-Input.GetAxis("Horizontal"), 0, -Input.GetAxis("Vertical"));
         brake = Input.GetKey(KeyCode.Space);
-        /*if (Input.GetKey(KeyCode.Escape))
-        {
-            if (EditorUtility.DisplayDialog("Quit Game",
-                "Are you sure to Quit the game?", "Yes, I give up","Cancel"))
-            {
-                Debug.Log("Quit Game~");
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-            }
-
-
-        }*/
         if (Input.GetKey(KeyCode.Q))
         {
             spin = -1;
@@ -89,6 +87,11 @@ public class BallController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Wall"))
         {
+            isWin = true;
+            // var particleSystem = Fire.GetComponent<ParticleSystem>();
+            // var em = particleSystem.emission;
+            // em.enabled = true;
+            // particleSystem.Play();
             foreach (Transform child in other.transform.parent)
             {
                 child.GetComponent<Rigidbody>().AddExplosionForce(400, other.contacts[0].point, 5, 3, ForceMode.Impulse);

@@ -10,7 +10,9 @@ public class CylinderTrap : MonoBehaviour
     private bool isFinish;
 
     public Rigidbody Plate;
-    public float speed = 2f;
+    private Transform trans;
+    public float speed = 1f;
+    private float dir = 1f;
     private bool SpeedEnough
 
     {
@@ -28,7 +30,7 @@ public class CylinderTrap : MonoBehaviour
     public GameObject Land;
     void Start()
     {
-
+        trans = Plate.transform;
     }
 
     // Update is called once per frame
@@ -47,7 +49,10 @@ public class CylinderTrap : MonoBehaviour
         }
         if (isFinish)
         {
-            Plate.velocity = Vector3.up * speed;
+            trans.position += Vector3.up * speed * Time.deltaTime * dir;
+            // Plate.velocity = Vector3.up * speed;
+            if (trans.position.y >= 2.8 || trans.position.y <= -2.8)
+                dir = -dir;
         }
     }
 }
