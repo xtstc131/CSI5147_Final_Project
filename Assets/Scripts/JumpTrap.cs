@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class JumpTrap : MonoBehaviour
 {
-    
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other != null) {
+        if (other != null)
+        {
             other.GetComponent<Rigidbody>().AddForce(Vector3.up * 10, ForceMode.Impulse);
         }
-         
     }
 
 }

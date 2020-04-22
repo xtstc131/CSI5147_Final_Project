@@ -47,7 +47,5 @@ public class CannonControler : MonoBehaviour
             CannonBall.position = this.transform.position;
 
         }
-
-
     }
 }

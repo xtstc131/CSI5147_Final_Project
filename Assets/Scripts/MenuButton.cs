@@ -10,15 +10,15 @@ public class MenuButton : MonoBehaviour
     public Button buttonStart;
     public Button buttonQuit;
     void Start()
-{
+    {
         var play = buttonStart.GetComponent<Button>();
         play.onClick.AddListener(startGame);
         var leave = buttonQuit.GetComponent<Button>();
         leave.onClick.AddListener(endGame);
 
     }
-void startGame()
-{
+    void startGame()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

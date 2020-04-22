@@ -11,7 +11,7 @@ public class Windmill : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rigid = this.GetComponent<Rigidbody> ();
+        rigid = this.GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()

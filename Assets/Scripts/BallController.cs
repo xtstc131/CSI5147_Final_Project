@@ -43,7 +43,7 @@ public class BallController : MonoBehaviour
 
     void Update()
     {
-        if(isWin)
+        if (isWin)
             return;
         if (this.transform.position.y < fallZone && !isWin) //Assuming its a 2D game
         {

@@ -22,17 +22,18 @@ public class Plate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(trans.position.x >= 2 && dir < 0)
-           {
-                dir = 1;
-           }
-        else if(trans.position.x <= -5 && dir > 0)
+        if (trans.position.x >= 2 && dir < 0)
+        {
+            dir = 1;
+        }
+        else if (trans.position.x <= -5 && dir > 0)
         {
             dir = -1;
         }
     }
 
-    void FixedUpdate(){
-        rigid.MovePosition(trans.position + trans.right* dir * speed * Time.fixedDeltaTime);
+    void FixedUpdate()
+    {
+        rigid.MovePosition(trans.position + trans.right * dir * speed * Time.fixedDeltaTime);
     }
 }
