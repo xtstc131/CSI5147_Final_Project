@@ -87,15 +87,22 @@ public class BallController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Wall"))
         {
+            var particleSystem = Fire.GetComponent<ParticleSystem>();
+            var em = particleSystem.emission;
+            em.enabled = true;
+            particleSystem.Play();
             isWin = true;
-            // var particleSystem = Fire.GetComponent<ParticleSystem>();
-            // var em = particleSystem.emission;
-            // em.enabled = true;
-            // particleSystem.Play();
+           
             foreach (Transform child in other.transform.parent)
             {
                 child.GetComponent<Rigidbody>().AddExplosionForce(400, other.contacts[0].point, 5, 3, ForceMode.Impulse);
             }
+            if (isWin)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            
+
         }
     }
 }

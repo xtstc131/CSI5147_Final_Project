@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CannonControler : MonoBehaviour
 {
@@ -30,6 +32,7 @@ public class CannonControler : MonoBehaviour
                 CannonBall.gameObject.SetActive(true);
                 CannonBall.GetComponent<BallController>().enabled = true;
                 CannonBall.GetComponent<Rigidbody>().AddForce(Force * LaunchPoint.forward, ForceMode.Impulse);
+
             }
         }
     }
@@ -44,7 +47,9 @@ public class CannonControler : MonoBehaviour
             CannonBall.gameObject.SetActive(false);
             CannonBall.GetComponent<Rigidbody>().velocity = Vector3.zero;
             CannonBall.position = this.transform.position;
+            
 
+            
         }
 
 
