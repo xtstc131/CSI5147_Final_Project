@@ -41,6 +41,7 @@ public class CannonControler : MonoBehaviour
             this.GetComponent<BoxCollider>().enabled = false;
             CannonBall = other.transform;
             CannonBall.GetComponent<BallController>().enabled = false;
+            // CannonBall.GetComponent<BallController>().isWin = true;
             CannonBall.gameObject.SetActive(false);
             CannonBall.GetComponent<Rigidbody>().velocity = Vector3.zero;
             CannonBall.position = this.transform.position;

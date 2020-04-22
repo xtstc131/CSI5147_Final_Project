@@ -19,7 +19,11 @@ public class CameraTrace : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var isWin = Target.GetComponent<BallController>().isWin;
+        if(isWin)
+            return;
         trans.position = Target.position + dis;
         trans.LookAt(Target);
     }
 }
+

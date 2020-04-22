@@ -24,14 +24,15 @@ public class BallController : MonoBehaviour
 
     public GameObject Fire;
 
-    private bool isWin = false;
+    public bool isWin;
 
     void Start()
     {
-        // var particleSystem = Fire.GetComponent<ParticleSystem>();
-        // var em = particleSystem.emission;
-        // em.enabled = false;
-        // particleSystem.Stop();
+        var particleSystem = Fire.GetComponent<ParticleSystem>();
+        var em = particleSystem.emission;
+        em.enabled = false;
+        particleSystem.Stop();
+        isWin = false;
         rigid = this.GetComponent<Rigidbody>();
         var leave = buttonQuit.GetComponent<Button>();
         leave.onClick.AddListener(endGame);
@@ -42,6 +43,8 @@ public class BallController : MonoBehaviour
 
     void Update()
     {
+        if(isWin)
+            return;
         if (this.transform.position.y < fallZone && !isWin) //Assuming its a 2D game
         {
             if (playerSpawnPoint != null)
@@ -85,17 +88,19 @@ public class BallController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision other)
     {
+
         if (other.gameObject.CompareTag("Wall"))
         {
+            var particleSystem = Fire.GetComponent<ParticleSystem>();
+            var em = particleSystem.emission;
+            em.enabled = true;
+            particleSystem.Play();
             isWin = true;
-            // var particleSystem = Fire.GetComponent<ParticleSystem>();
-            // var em = particleSystem.emission;
-            // em.enabled = true;
-            // particleSystem.Play();
             foreach (Transform child in other.transform.parent)
             {
-                child.GetComponent<Rigidbody>().AddExplosionForce(400, other.contacts[0].point, 5, 3, ForceMode.Impulse);
+                child.GetComponent<Rigidbody>().AddExplosionForce(200, other.contacts[0].point, 5, 3);
             }
+
         }
     }
 }
